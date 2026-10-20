@@ -1,0 +1,22 @@
+services:
+  app:
+    image: node:24-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URL: mongodb://webdb:27017/CLARK_project2
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - webdb
+
+  webdb:
+    image: mongo:7
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
