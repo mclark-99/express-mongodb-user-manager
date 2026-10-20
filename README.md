@@ -94,7 +94,7 @@ The MongoDB named volume preserves database records between container restarts.
 
 ## Application Preview
 
-*Screenshot to be added after the interface redesign.*
+![Portfolio Application Screenshot](express-mongodb-screenshot.png)
 
 ## Future Improvements
 
