@@ -1,7 +1,10 @@
+"use strict";
+
 const express = require("express");
 const path = require("path");
 const expressLayouts = require("express-ejs-layouts");
 const { StatusCodes } = require("http-status-codes");
+const { connectDB } = require("./config/db");
 
 const app = express();
 const PORT = process.env.PORT  || 3000;
@@ -26,6 +29,11 @@ app.use((req, res) => {
     res.status(StatusCodes.NOT_FOUND).send("<h1>404 - Page Not Found</h1>");
 });
 
-app.listen(PORT, () => {
-    console.log('Server running on port ${PORT}');
-});
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    })
+    .catch((err) => {
+        console.error("Mongo connection failed:",err.message);
+        process.exit(1);
+    });

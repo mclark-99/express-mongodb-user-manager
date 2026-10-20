@@ -1,3 +1,5 @@
+"use strict";
+
 const { StatusCodes } = require("http-status-codes");
 
 function showHome(req,res) {

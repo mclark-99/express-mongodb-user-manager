@@ -1,3 +1,5 @@
+"use strict";
+
 let users = [
     {id: 1, name: "Amy Adams", gender: "Female"},
     {id: 2, name: "Chris Evans", gender: "Male"}
